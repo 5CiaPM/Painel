@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel de Serviço — 5ª Cia PM</title>
+<meta name="theme-color" content="#0b1424">
+<link rel="icon" href="assets/pm.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Login (só aparece quando o Firebase está configurado) -->
+<div id="login" class="login" hidden>
+  <form id="loginForm" class="login-card">
+    <img src="assets/pm.png" alt="" width="72" height="72">
+    <h1>Painel de Serviço</h1>
+    <p>2º BPM/I — 5ª Cia PM · Guararapes</p>
+    <label>E-mail<input id="loginEmail" type="email" autocomplete="username" required></label>
+    <label>Senha<input id="loginSenha" type="password" autocomplete="current-password" required></label>
+    <button class="btn primary" type="submit">Entrar</button>
+    <p id="loginErro" class="erro" role="alert"></p>
+  </form>
+</div>
+
+<header class="topo">
+  <div class="marca">
+    <img src="assets/pm.png" alt="" width="44" height="44">
+    <div>
+      <h1>Painel de Serviço</h1>
+      <p>2º BPM/I · 5ª Cia PM · Guararapes</p>
+    </div>
+  </div>
+  <div class="relogio">
+    <strong id="hora">--:--</strong>
+    <span id="dataExtenso"></span>
+  </div>
+  <div class="status">
+    <span id="modo" class="chip"></span>
+    <button id="sair" class="btn ghost small" hidden>Sair</button>
+  </div>
+</header>
+
+<main class="grade">
+
+  <!-- ===== Botões / links ===== -->
+  <section class="painel" aria-labelledby="tLinks">
+    <h2 id="tLinks">Acesso rápido</h2>
+    <div id="icones" class="icones"></div>
+    <div id="grupos"></div>
+  </section>
+
+  <!-- ===== Agenda mensal ===== -->
+  <section class="painel agenda" aria-labelledby="tAgenda">
+    <h2 id="tAgenda">Agenda mensal</h2>
+
+    <div id="alertasAgenda" class="alertas" aria-live="assertive"></div>
+
+    <div class="mes-nav">
+      <button class="btn ghost small" id="mesAnt" aria-label="Mês anterior">‹</button>
+      <strong id="mesTitulo"></strong>
+      <button class="btn ghost small" id="mesProx" aria-label="Próximo mês">›</button>
+      <button class="btn ghost small" id="mesHoje">Hoje</button>
+    </div>
+    <div class="cal" id="cal" role="grid" aria-label="Calendário"></div>
+
+    <form id="formLembrete" class="form-lembrete">
+      <label class="f-data">Data<input type="date" id="lemData" required></label>
+      <label class="f-hora">Hora<input type="time" id="lemHora" required></label>
+      <label class="f-texto">Compromisso / lembrete<input type="text" id="lemTexto" maxlength="200" placeholder="Ex.: Reunião no Batalhão" required></label>
+      <button class="btn primary" type="submit">Agendar</button>
+    </form>
+
+    <div class="lista-cab">
+      <h3 id="listaTitulo">Compromissos do mês</h3>
+      <button class="btn ghost small" id="limparFiltro" hidden>Ver mês todo</button>
+    </div>
+    <ul id="listaLembretes" class="lista"></ul>
+
+    <h3>Lembretes fixos</h3>
+    <ul id="listaNotas" class="lista notas"></ul>
+    <form id="formNota" class="form-nota">
+      <input type="text" id="notaTexto" maxlength="120" placeholder="Novo lembrete fixo (ex.: Planilha TDS todo dia 09)" aria-label="Novo lembrete fixo">
+      <button class="btn ghost small" type="submit">Adicionar</button>
+    </form>
+  </section>
+
+  <!-- ===== Aniversariantes ===== -->
+  <section class="painel aniv" aria-labelledby="tAniv">
+    <h2 id="tAniv">🎂 Aniversariantes</h2>
+    <ul id="listaAniv" class="lista aniv-lista" aria-live="assertive"></ul>
+    <form id="formAniv" class="form-aniv">
+      <label class="f-dm">Dia<input type="number" id="anDia" min="1" max="31" required></label>
+      <label class="f-dm">Mês<input type="number" id="anMes" min="1" max="12" required></label>
+      <label class="f-nome">Posto e nome<input type="text" id="anNome" maxlength="60" placeholder="Ex.: CB FULANO" required></label>
+      <button class="btn primary" type="submit">Incluir</button>
+    </form>
+  </section>
+</main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="links.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

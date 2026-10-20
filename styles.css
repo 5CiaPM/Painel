@@ -1,0 +1,138 @@
+:root{
+  --bg:#0b1424; --bg2:#101c33; --card:#14233f; --linha:#27385a;
+  --txt:#e8eefc; --mudo:#93a4c7; --ouro:#f5c400; --azul:#2f6fdc;
+  --verde:#00a050; --azulP3:#0070c0; --perigo:#e5322d;
+  --raio:14px;
+}
+*{box-sizing:border-box}
+html{color-scheme:dark}
+body{margin:0;background:radial-gradient(1200px 600px at 20% -10%,#17305c 0,var(--bg) 60%) fixed;color:var(--txt);
+  font:15px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;min-height:100vh}
+h1,h2,h3{margin:0}
+[hidden]{display:none!important}
+
+/* topo */
+.topo{display:flex;align-items:center;gap:16px;justify-content:space-between;flex-wrap:wrap;
+  padding:12px 20px;border-bottom:2px solid var(--ouro);background:rgba(11,20,36,.85);backdrop-filter:blur(6px);position:sticky;top:0;z-index:5}
+.marca{display:flex;gap:12px;align-items:center}
+.marca img{border-radius:8px;background:#fff;padding:2px}
+.marca h1{font-size:20px;letter-spacing:.5px}
+.marca p{margin:0;color:var(--mudo);font-size:12px}
+.relogio{text-align:center}
+.relogio strong{display:block;font-size:26px;font-variant-numeric:tabular-nums;color:var(--ouro)}
+.relogio span{font-size:12px;color:var(--mudo)}
+.status{display:flex;gap:8px;align-items:center}
+.chip{font-size:12px;padding:4px 10px;border-radius:99px;border:1px solid var(--linha);color:var(--mudo)}
+.chip.nuvem{color:#7be0a4;border-color:#2c6b4a}
+.chip.local{color:#ffd36b;border-color:#7a6320}
+
+/* grade */
+.grade{display:grid;grid-template-columns:minmax(300px,1.1fr) minmax(340px,1.2fr) minmax(280px,.9fr);gap:16px;padding:16px 20px 40px;max-width:1700px;margin:auto}
+@media (max-width:1100px){.grade{grid-template-columns:1fr 1fr}.aniv{grid-column:1/-1}}
+@media (max-width:720px){.grade{grid-template-columns:1fr;padding:12px}}
+.painel{background:linear-gradient(180deg,var(--card),var(--bg2));border:1px solid var(--linha);border-radius:var(--raio);padding:16px}
+.painel>h2{font-size:15px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ouro);margin-bottom:12px}
+.agenda{border:2px solid var(--ouro)}
+.aniv{border:2px solid var(--ouro);background:#06090f}
+h3{font-size:13px;color:var(--mudo);text-transform:uppercase;letter-spacing:1px;margin:16px 0 8px}
+
+/* botões de link */
+.icones{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.icone{width:74px;height:74px;border-radius:12px;background:#fff;border:2px solid transparent;display:grid;place-items:center;cursor:pointer;padding:4px;transition:.15s}
+.icone img{max-width:100%;max-height:100%;object-fit:contain}
+.icone:hover,.icone:focus-visible{border-color:var(--ouro);transform:translateY(-2px)}
+.grupo-t{font-size:12px;color:var(--mudo);text-transform:uppercase;letter-spacing:1px;margin:14px 0 8px}
+.botoes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media (max-width:420px){.botoes{grid-template-columns:repeat(2,1fr)}}
+.botao{min-height:52px;padding:8px 6px;border-radius:12px;border:1px solid #3a5a96;background:linear-gradient(180deg,#2d5fb8,#1f4690);
+  color:#fff;font:600 12px/1.2 inherit;text-transform:uppercase;letter-spacing:.3px;cursor:pointer;transition:.15s;text-align:center}
+.botao:hover,.botao:focus-visible{filter:brightness(1.2);transform:translateY(-1px);outline:2px solid var(--ouro);outline-offset:1px}
+.botao.verde{background:linear-gradient(180deg,#14b867,#008a48);border-color:#2fd98a}
+.botao.azulp3{background:linear-gradient(180deg,#1b8de0,#0057a0);border-color:#5ab5ff}
+.botao[disabled]{opacity:.4;cursor:not-allowed;filter:none;transform:none;outline:none}
+
+/* botões gerais / formulários */
+.btn{border:1px solid var(--linha);background:#1b2d4f;color:var(--txt);border-radius:10px;padding:9px 14px;font:600 14px inherit;cursor:pointer}
+.btn:hover{filter:brightness(1.2)}
+.btn.primary{background:var(--ouro);color:#111;border-color:var(--ouro)}
+.btn.ghost{background:transparent}
+.btn.small{padding:5px 10px;font-size:13px}
+.btn.ok{background:#fff;color:#111;border-color:#111;font-weight:800;padding:8px 18px}
+input{background:#0b1424;color:var(--txt);border:1px solid var(--linha);border-radius:8px;padding:8px 10px;font:inherit;width:100%}
+input:focus-visible,.btn:focus-visible{outline:2px solid var(--ouro);outline-offset:1px}
+label{display:block;font-size:12px;color:var(--mudo)}
+label input{margin-top:3px}
+
+/* calendário */
+.mes-nav{display:flex;align-items:center;gap:8px;justify-content:space-between;margin-bottom:8px}
+.mes-nav strong{flex:1;text-align:center;text-transform:capitalize;font-size:16px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal .dow{font-size:11px;color:var(--mudo);text-align:center;padding:2px 0}
+.dia{position:relative;aspect-ratio:1.25;border-radius:8px;border:1px solid var(--linha);background:#0e1a31;color:var(--txt);cursor:pointer;font:inherit;padding:2px}
+.dia.vazio{visibility:hidden}
+.dia:hover{border-color:var(--ouro)}
+.dia.hoje{border-color:var(--ouro);box-shadow:inset 0 0 0 1px var(--ouro)}
+.dia.sel{background:#243f74}
+.dia .n{font-weight:700}
+.dia .pt{position:absolute;bottom:3px;left:50%;transform:translateX(-50%);display:flex;gap:2px}
+.dia .pt i{width:6px;height:6px;border-radius:50%;background:var(--azul)}
+.dia .pt i.pend{background:var(--ouro)}
+.dia.alerta{animation:pisca 1s steps(2,start) infinite}
+
+.form-lembrete{display:grid;grid-template-columns:1fr 100px;gap:8px;margin-top:12px;align-items:end}
+.form-lembrete .f-texto{grid-column:1/-1}
+.form-lembrete .btn{grid-column:1/-1}
+.form-aniv{display:grid;grid-template-columns:70px 70px 1fr;gap:8px;margin-top:14px;align-items:end}
+.form-aniv .btn{grid-column:1/-1}
+.form-nota{display:flex;gap:6px;margin-top:8px}
+
+/* listas */
+.lista-cab{display:flex;justify-content:space-between;align-items:center}
+.lista{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.lista li{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;background:#0e1a31;border:1px solid var(--linha)}
+.lista li .quando{font-variant-numeric:tabular-nums;color:var(--ouro);font-weight:700;white-space:nowrap;font-size:13px}
+.lista li .txt{flex:1;word-break:break-word}
+.lista li.feito{opacity:.5}
+.lista li.feito .txt{text-decoration:line-through}
+.lista .vazio{justify-content:center;color:var(--mudo);border-style:dashed}
+.x{background:transparent;border:0;color:var(--mudo);cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;border-radius:6px}
+.x:hover{color:var(--perigo)}
+.notas li{padding:6px 10px}
+.notas li::before{content:"•";color:var(--ouro)}
+
+.aniv-lista li{background:#0f1522;font-weight:700}
+.aniv-lista .quando{font-size:16px}
+.aniv-lista .txt{text-transform:uppercase;letter-spacing:.3px}
+.aniv-lista li.hoje-anv .quando::after{content:" · HOJE";font-size:11px}
+
+/* alertas piscando */
+.alertas{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.alertas:empty{display:none}
+.alerta-item{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;border:2px solid #fff;color:#fff;font-weight:700;animation:pisca 1s steps(2,start) infinite}
+.alerta-item .quando{color:#fff;white-space:nowrap}
+.alerta-item .txt{flex:1}
+li.piscando{animation:pisca 1s steps(2,start) infinite;border-color:#fff!important;color:#fff}
+li.piscando .quando{color:#fff}
+@keyframes pisca{
+  0%{background:var(--perigo);box-shadow:0 0 14px var(--perigo)}
+  50%{background:#ffb400;color:#111;box-shadow:0 0 14px #ffb400}
+}
+li.piscando.alt,.alerta-item{ }
+@keyframes pisca-suave{0%,100%{opacity:1}50%{opacity:.45}}
+@media (prefers-reduced-motion:reduce){
+  .alerta-item,li.piscando,.dia.alerta{animation:pisca-suave 1.6s ease-in-out infinite;background:var(--perigo)}
+}
+
+/* login */
+.login{position:fixed;inset:0;z-index:20;background:var(--bg);display:grid;place-items:center;padding:16px}
+.login-card{width:min(360px,100%);background:var(--card);border:2px solid var(--ouro);border-radius:var(--raio);padding:24px;display:flex;flex-direction:column;gap:12px;text-align:center}
+.login-card img{margin:auto;background:#fff;border-radius:10px;padding:3px}
+.login-card p{margin:0;color:var(--mudo);font-size:13px}
+.login-card label{text-align:left}
+.erro{color:#ff8a86!important;min-height:1.2em}
+
+/* toast */
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,30px);opacity:0;pointer-events:none;background:#0b1424;border:1px solid var(--ouro);
+  padding:12px 18px;border-radius:12px;max-width:min(560px,92vw);transition:.25s;z-index:30;text-align:center;box-shadow:0 8px 30px #000a}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.toast code{display:block;margin-top:6px;font-size:12px;color:var(--ouro);word-break:break-all}

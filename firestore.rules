@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Só usuários logados (e-mail/senha) leem e gravam.
+    // Para travar em contas específicas, troque a condição por:
+    //   request.auth != null && request.auth.token.email in ['seu@email.com']
+    match /{document=**} {
+      allow read, write: if request.auth != null;
+    }
+  }
+}
