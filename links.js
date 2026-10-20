@@ -10,7 +10,7 @@ window.PAINEL_LINKS = {
         {
           "rotulo": "DEJEM",
           "tipo": "pasta",
-          "url": "\\\\10.35.111.99\\Adm 2023\\DEJEM"
+          "url": ""D:\Desktop\DEJEM.lnk""
         },
         {
           "rotulo": "DOCUMENTOS MENSAIS",
